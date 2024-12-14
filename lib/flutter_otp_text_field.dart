@@ -155,7 +155,7 @@ class _OtpTextFieldState extends State<OtpTextField> {
         showCursor: widget.showCursor,
         keyboardType: widget.keyboardType,
         textAlign: TextAlign.center,
-        maxLength: widget.numberOfFields,
+        maxLength: 1,
         readOnly: widget.readOnly,
         style: style ?? widget.textStyle,
         autofocus: widget.autoFocus,
@@ -167,23 +167,23 @@ class _OtpTextFieldState extends State<OtpTextField> {
         decoration: widget.hasCustomInputDecoration
             ? widget.decoration
             : InputDecoration(
-          counterText: "",
-          filled: widget.filled,
-          fillColor: widget.fillColor,
-          focusedBorder: widget.showFieldAsBox
-              ? outlineBorder(widget.focusedBorderColor)
-              : underlineInputBorder(widget.focusedBorderColor),
-          enabledBorder: widget.showFieldAsBox
-              ? outlineBorder(widget.enabledBorderColor)
-              : underlineInputBorder(widget.enabledBorderColor),
-          disabledBorder: widget.showFieldAsBox
-              ? outlineBorder(widget.disabledBorderColor)
-              : underlineInputBorder(widget.disabledBorderColor),
-          border: widget.showFieldAsBox
-              ? outlineBorder(widget.borderColor)
-              : underlineInputBorder(widget.borderColor),
-          contentPadding: widget.contentPadding,
-        ),
+                counterText: "",
+                filled: widget.filled,
+                fillColor: widget.fillColor,
+                focusedBorder: widget.showFieldAsBox
+                    ? outlineBorder(widget.focusedBorderColor)
+                    : underlineInputBorder(widget.focusedBorderColor),
+                enabledBorder: widget.showFieldAsBox
+                    ? outlineBorder(widget.enabledBorderColor)
+                    : underlineInputBorder(widget.enabledBorderColor),
+                disabledBorder: widget.showFieldAsBox
+                    ? outlineBorder(widget.disabledBorderColor)
+                    : underlineInputBorder(widget.disabledBorderColor),
+                border: widget.showFieldAsBox
+                    ? outlineBorder(widget.borderColor)
+                    : underlineInputBorder(widget.borderColor),
+                contentPadding: widget.contentPadding,
+              ),
         obscureText: widget.obscureText,
         onChanged: (String value) {
           if (value.length <= 1) {
@@ -298,7 +298,7 @@ class _OtpTextFieldState extends State<OtpTextField> {
     _backspaceHandled = true;
     Future.delayed(
       Duration(milliseconds: 100),
-          () {
+      () {
         _backspaceHandled = false;
       },
     );
@@ -319,7 +319,7 @@ class _OtpTextFieldState extends State<OtpTextField> {
     if (_backspaceHandled) return;
     try {
       final index =
-      _focusNodes.indexWhere((element) => element?.hasFocus ?? false);
+          _focusNodes.indexWhere((element) => element?.hasFocus ?? false);
       if (index > 0) {
         FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
       }
